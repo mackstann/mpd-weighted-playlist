@@ -37,7 +37,9 @@ weights = {
     # A weight of 2.5 means each song will appear twice and on average 50% of
     # them will appear 3 times. i.e. 2.5x, or 250% of normal.  A weight of .33
     # means that roughly only a third of the files that match that entry will
-    # appear at all, and none will appear more than once.
+    # appear at all, and none will appear more than once.  Every file that
+    # doesn't match one of the weights you enter here will have a default
+    # weight of 1, meaning it will appear once in the playlist.
 
     # If multiple weights match a single song, like artist and artist+title,
     # then the weights are multiplied by each other.
