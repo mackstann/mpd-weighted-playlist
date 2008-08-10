@@ -81,8 +81,6 @@ for song in songs:
 
     for i in range(this_song_count):
         c.do.add(song.file)
-        if c.talker.ack:
-            print c.talker.ack
 
 if wasplaying:
     c.do.play()
