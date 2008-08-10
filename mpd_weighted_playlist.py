@@ -2,6 +2,9 @@
 
 # Written by Nick Welch in the year 2008.  Author disclaims copyright.
 
+# The mpdclient3 Python module is required.  On Ubuntu the necessary package is
+# python-mpdclient.
+
 # This script is for MPD (http://musicpd.org) users who basically like to
 # listen to their entire music collection at random, but want a little control
 # to play some things more and some things less (and maybe some things not at
