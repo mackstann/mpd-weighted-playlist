@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # Written by Nick Welch in the year 2008.  Author disclaims copyright.
 
 # This script is for MPD (http://musicpd.org) users who basically like to
