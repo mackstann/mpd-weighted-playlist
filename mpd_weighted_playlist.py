@@ -44,7 +44,7 @@ weights = {
 
     'Some Artist': 1.5,
     ('An Artist', "Hey It's An Album"): 5.0,
-    ('Artist', 'Album', 'the name of the song'): 1.0,
+    ('Artist', 'Album', 'the name of the song that I hate'): 0,
 
 }
 
