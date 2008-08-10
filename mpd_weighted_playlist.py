@@ -18,7 +18,7 @@
 # apt-get install it) to check when the computer has been idle for about 4
 # hours.  Here's what the cron job looks like:
 
-# @hourly export DISPLAY=:0; test `xprintidle` -gt $((60*60*4)) && python path/to/this/script.py
+# @hourly export DISPLAY=:0; test `xprintidle` -gt $((1000*60*60*4)) && python path/to/this/script.py
 
 # Just run crontab -e, which will start an editor, then add that line, save,
 # and quit.
