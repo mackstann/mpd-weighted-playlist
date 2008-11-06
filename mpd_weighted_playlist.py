@@ -23,39 +23,34 @@
 # Just run crontab -e, which will start an editor, then add that line, save,
 # and quit.
 
-# Back on topic.. edit the weights below.
+# How the weights work:
+# A weight of 2.5 means each song will appear twice and on average 50% of
+# them will appear 3 times. i.e. 2.5x, or 250% of normal.  A weight of .33
+# means that roughly only a third of the files that match that entry will
+# appear at all, and none will appear more than once.  Every file that
+# doesn't match one of the weights you enter here will have a default
+# weight of 1, meaning it will appear once in the playlist.
 
-weights = {
-    # Notes for non-programmers or non-Python programmers:
-    # - Remember to put a comma at the end of each one.
-    # - Double quotes and single quotes are equivalent.  Use what's convenient.
-    # - To put a double quote in a double-quoted string, you must put a
-    #   backslash (\) before it, and the same goes for single quotes.  Like:
-    #   'It\'s'.
+# If multiple weights match a single song, like artist and artist+title,
+# then the weights are multiplied by each other.
 
-    # How the weights work:
-    # A weight of 2.5 means each song will appear twice and on average 50% of
-    # them will appear 3 times. i.e. 2.5x, or 250% of normal.  A weight of .33
-    # means that roughly only a third of the files that match that entry will
-    # appear at all, and none will appear more than once.  Every file that
-    # doesn't match one of the weights you enter here will have a default
-    # weight of 1, meaning it will appear once in the playlist.
+# These are case insensitive and no regular expressions or wildcards are
+# implemented.
 
-    # If multiple weights match a single song, like artist and artist+title,
-    # then the weights are multiplied by each other.
+# Valid examples:
 
-    # These are case insensitive and no regular expressions or wildcards are
-    # implemented.
+# 'Some Artist': 1.5,
+# ('An Artist', "Hey It's An Album"): 5.0,
+# ('Artist', 'Album', 'the name of the song that I hate'): 0,
 
-    # Valid examples (delete them and enter your own here):
+# Enter such lines into a file (preferably ~/.mpd-weights if you want the
+# killsong.py script to cooperate), and pipe that file into this script.  Like:
 
-    'Some Artist': 1.5,
-    ('An Artist', "Hey It's An Album"): 5.0,
-    ('Artist', 'Album', 'the name of the song that I hate'): 0,
+# $ ./mpd_weighted_playlist.py < ~/.mpd-weights
 
-}
+import mpdclient3, re, random, sys
 
-import mpdclient3, re, random
+weights = eval('{'+sys.stdin.read()+'}')
 
 c = mpdclient3.connect()
 
